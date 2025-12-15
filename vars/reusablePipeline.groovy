@@ -1,4 +1,5 @@
-pipeline {
+def call (string gitUrl, string gitToken) {
+     pipeline {
 
     agent any
 
@@ -10,8 +11,8 @@ pipeline {
                     $class: 'GitSCM',
                     branches: [[name: '*/main']],
                     userRemoteConfigs: [[
-                        url: 'https://github.com/Pradeep-812304/master_repo.git',
-                        credentialsId: 'pipeline_pass'
+                        url: gitUrl,
+                        credentialsId: gitToken
                     ]]
                 ])
             }
@@ -40,3 +41,6 @@ pipeline {
 
     }
 }
+    
+}
+
